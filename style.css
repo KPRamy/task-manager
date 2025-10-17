@@ -1,0 +1,371 @@
+/* =======================================================
+   GLOBAL STYLES
+   Applies to the whole page
+======================================================= */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    /* Modern readable font */
+    background-image: url('images/background1.jpg');
+    /* Main background image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    /* Stays in place while scrolling */
+    background-repeat: no-repeat;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    /* Default text color */
+}
+
+/* =======================================================
+   MAIN CONTAINER (for index.php task list)
+======================================================= */
+.container {
+    width: 85%;
+    max-width: 1000px;
+    margin: 50px auto;
+    /* Center container */
+    background: rgba(255, 255, 255, 0.9);
+    /* Semi-transparent white */
+    padding: 25px 35px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(3px);
+    /* Slight blur behind container */
+}
+
+/* =======================================================
+   HEADINGS
+======================================================= */
+h2 {
+    text-align: center;
+    color: #222;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+/* =======================================================
+   TOP BAR (Add task button, search & filter)
+======================================================= */
+.top-bar {
+    text-align: right;
+    margin-bottom: 15px;
+}
+
+/* =======================================================
+   TABLE STYLES
+======================================================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 12px 10px;
+    text-align: left;
+    font-size: 15px;
+}
+
+th {
+    background: linear-gradient(45deg, #007bff, #00bcd4);
+    /* Gradient header */
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+tr:nth-child(even) {
+    background: rgba(0, 0, 0, 0.03);
+    /* Alternate row color */
+}
+
+tr:hover {
+    background: rgba(0, 123, 255, 0.05);
+    /* Hover highlight */
+}
+
+/* =======================================================
+   STATUS TAGS
+======================================================= */
+.status {
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.status.pending {
+    background: #ffefc2;
+    color: #b8860b;
+}
+
+.status.completed {
+    background: #c8f7c5;
+    color: #1b5e20;
+}
+
+/* Strike-through completed tasks */
+.completed td {
+    text-decoration: line-through;
+    color: gray;
+}
+
+/* =======================================================
+   NO DATA MESSAGE
+======================================================= */
+.no-data {
+    text-align: center;
+    color: #777;
+    font-style: italic;
+}
+
+/* =======================================================
+   BUTTONS
+======================================================= */
+.btn {
+    padding: 8px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    margin: 3px;
+    display: inline-block;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+/* ADD BUTTON */
+.add {
+    background: linear-gradient(45deg, #28a745, #5cd65c);
+    color: white;
+}
+
+.add:hover {
+    background: linear-gradient(45deg, #218838, #4caf50);
+    transform: scale(1.05);
+}
+
+/* EDIT BUTTON */
+.edit {
+    background: #007bff;
+    color: white;
+}
+
+.edit:hover {
+    background: #0069d9;
+}
+
+/* DELETE BUTTON */
+.delete {
+    background: #dc3545;
+    color: white;
+}
+
+.delete:hover {
+    background: #c82333;
+}
+
+/* COMPLETE BUTTON */
+.complete {
+    background: #ffc107;
+    color: black;
+}
+
+.complete:hover {
+    background: #e0a800;
+}
+
+/* BACK BUTTON */
+.back {
+    background: #6c757d;
+    color: white;
+}
+
+.back:hover {
+    background: #5a6268;
+}
+
+/* =======================================================
+   ERROR MESSAGES
+======================================================= */
+.error {
+    color: #e63946;
+    background: rgba(255, 0, 0, 0.1);
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* =======================================================
+   ADD / EDIT TASK PAGE BACKGROUND
+======================================================= */
+.add-bg {
+    background: url('images/background1.jpg') no-repeat center center/cover;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(6px);
+}
+
+/* =======================================================
+   FORM CONTAINER (for add_task.php & edit_task.php)
+======================================================= */
+.form-container {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px 45px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    width: 420px;
+    max-width: 90%;
+    text-align: center;
+}
+
+/* Form heading */
+.form-container h2 {
+    margin-bottom: 25px;
+    color: #222;
+    font-size: 26px;
+    letter-spacing: 0.5px;
+}
+
+/* =======================================================
+   INPUT FIELDS
+======================================================= */
+.form-container label {
+    display: block;
+    margin-top: 15px;
+    text-align: left;
+    font-weight: 600;
+    color: #333;
+    font-size: 15px;
+}
+
+.form-container input[type="text"],
+.form-container input[type="date"],
+.form-container textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 6px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.form-container input:focus,
+.form-container textarea:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+    outline: none;
+}
+
+.form-container textarea {
+    height: 100px;
+    resize: none;
+}
+
+/* =======================================================
+   BUTTON GROUP IN FORM
+======================================================= */
+.btn-group {
+    margin-top: 25px;
+}
+
+/* =======================================================
+   EMPTY TABLE MESSAGE
+======================================================= */
+td[colspan="5"] {
+    text-align: center;
+    padding: 25px;
+    color: #666;
+    font-style: italic;
+}
+
+/* =======================================================
+   SEARCH & FILTER
+======================================================= */
+.search-filter {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+.search-filter input[type="text"] {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.search-filter input[type="text"]:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.4);
+}
+
+.search-filter select {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+.search-filter button.search {
+    background: #007bff;
+    color: white;
+    font-weight: bold;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.search-filter button.search:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+/* =======================================================
+   RESPONSIVE DESIGN
+======================================================= */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    table,
+    th,
+    td {
+        font-size: 13px;
+    }
+
+    .form-container {
+        width: 90%;
+        padding: 25px;
+    }
+
+    .search-filter {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-filter input,
+    .search-filter select,
+    .search-filter button.search {
+        width: 100%;
+    }
+}
+
