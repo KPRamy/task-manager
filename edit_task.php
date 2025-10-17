@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <!-- Title field -->
             <label>Title</label>
             <input type="text" name="title"
-                value="<?= htmlspecialchars($task['title']); ?>" required>
+                value="<?= htmlspecialchars($task['title']); ?>">
 
             <!-- Description field -->
             <label>Description</label>
