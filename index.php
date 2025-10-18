@@ -38,7 +38,7 @@ $result = $conn->query($sql);
 
 <head>
     <meta charset="UTF-8">
-    <title>📝 Task Manager</title>
+    <title>Task Manager</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
