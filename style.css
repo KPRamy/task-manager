@@ -62,6 +62,7 @@ table {
     margin-top: 20px;
     border-radius: 10px;
     overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
 }
 
 th,
@@ -74,7 +75,6 @@ td {
 
 th {
     background: linear-gradient(45deg, #007bff, #00bcd4);
-    /* Gradient header */
     color: white;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -82,32 +82,34 @@ th {
 
 tr:nth-child(even) {
     background: rgba(0, 0, 0, 0.03);
-    /* Alternate row color */
 }
 
 tr:hover {
-    background: rgba(0, 123, 255, 0.05);
-    /* Hover highlight */
+    background: rgba(0, 123, 255, 0.08);
+    transition: background 0.3s ease;
 }
 
 /* =======================================================
    STATUS TAGS
 ======================================================= */
 .status {
-    padding: 5px 10px;
+    padding: 6px 10px;
     border-radius: 8px;
     font-weight: 600;
     text-transform: capitalize;
+    display: inline-block;
 }
 
-.status.pending {
-    background: #ffefc2;
-    color: #b8860b;
+.status.inprogress {
+    background: #fff4cc;
+    color: #b86b0b;
+    border: 1px solid #ffe599;
 }
 
 .status.completed {
-    background: #c8f7c5;
-    color: #1b5e20;
+    background: #c7f9cc;
+    color: #136f2e;
+    border: 1px solid #8de18f;
 }
 
 /* Strike-through completed tasks */
@@ -123,6 +125,7 @@ tr:hover {
     text-align: center;
     color: #777;
     font-style: italic;
+    padding: 15px 0;
 }
 
 /* =======================================================
@@ -135,8 +138,8 @@ tr:hover {
     font-size: 14px;
     margin: 3px;
     display: inline-block;
-    transition: all 0.3s ease;
     font-weight: 500;
+    transition: all 0.25s ease;
 }
 
 /* ADD BUTTON */
@@ -147,7 +150,7 @@ tr:hover {
 
 .add:hover {
     background: linear-gradient(45deg, #218838, #4caf50);
-    transform: scale(1.05);
+    transform: translateY(-2px);
 }
 
 /* EDIT BUTTON */
@@ -157,7 +160,8 @@ tr:hover {
 }
 
 .edit:hover {
-    background: #0069d9;
+    background: #0056b3;
+    transform: translateY(-2px);
 }
 
 /* DELETE BUTTON */
@@ -168,6 +172,7 @@ tr:hover {
 
 .delete:hover {
     background: #c82333;
+    transform: translateY(-2px);
 }
 
 /* COMPLETE BUTTON */
@@ -178,6 +183,7 @@ tr:hover {
 
 .complete:hover {
     background: #e0a800;
+    transform: translateY(-2px);
 }
 
 /* BACK BUTTON */
@@ -188,7 +194,9 @@ tr:hover {
 
 .back:hover {
     background: #5a6268;
+    transform: translateY(-2px);
 }
+
 
 /* =======================================================
    ERROR MESSAGES

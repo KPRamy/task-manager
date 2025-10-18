@@ -1,21 +1,22 @@
-
 <?php include 'database.php';
-
 
 // HANDLE SEARCH & FILTER INPUTS:
 // Get the search keyword from URL (if any)
 $search = trim($_GET['search'] ?? '');
-// Get the selected filter (Pending / Completed / All)
+
+// Get the selected filter (In progress / Completed / All)
 $filter = $_GET['filter'] ?? 'all';
+
 // BUILD SQL QUERY DYNAMICALLY
 $sql = "SELECT * FROM tasks WHERE 1=1"; // Start with a base query
 
 // Add filter condition based on selected option
-if ($filter === 'Pending') {
-    $sql .= " AND status='Pending'";
+if ($filter === 'In progress') {
+    $sql .= " AND status='In progress'";
 } elseif ($filter === 'Completed') {
     $sql .= " AND status='Completed'";
 }
+
 // Add search condition if user entered a keyword
 if ($search !== '') {
     // Escape special characters to prevent SQL injection
@@ -60,7 +61,7 @@ $result = $conn->query($sql);
                 <!-- Filter dropdown -->
                 <select name="filter">
                     <option value="all" <?= $filter === 'all' ? 'selected' : '' ?>>All</option>
-                    <option value="Pending" <?= $filter === 'Pending' ? 'selected' : '' ?>>Pending</option>
+                    <option value="In progress" <?= $filter === 'In progress' ? 'selected' : '' ?>>In progress</option>
                     <option value="Completed" <?= $filter === 'Completed' ? 'selected' : '' ?>>Completed</option>
                 </select>
 
@@ -69,7 +70,7 @@ $result = $conn->query($sql);
             </form>
         </div>
 
-    
+
         <!-- TASK TABLE SECTION -->
         <div class="table-wrapper">
             <table>
@@ -93,21 +94,24 @@ $result = $conn->query($sql);
 
                                 <!-- Display task status with color -->
                                 <td>
-                                    <span class="status <?= strtolower($row['status']); ?>">
+                                    <!-- Make sure 'In progress' becomes 'inprogress' for CSS -->
+                                    <span class="status <?= strtolower(str_replace(' ', '', $row['status'])); ?>">
                                         <?= htmlspecialchars($row['status']); ?>
                                     </span>
                                 </td>
 
                                 <!-- ACTION BUTTONS -->
                                 <td class="action-buttons">
-                                    <!-- Show complete button only if task is Pending -->
-                                    <?php if ($row['status'] == 'Pending'): ?>
-                                        <a href="update_task.php?id=<?= $row['id']; ?>&action=complete"
-                                            class="btn complete">✅</a>
+                                    <!-- Show complete button only if task is In progress -->
+                                    <?php if ($row['status'] == 'In progress'): ?>
+                                        <a href="update_task.php?id=<?= $row['id']; ?>&action=complete" class="btn complete">✅</a>
                                     <?php endif; ?>
 
-                                    <!-- Edit task button -->
-                                    <a href="edit_task.php?id=<?= $row['id']; ?>" class="btn edit">✏️</a>
+                                    <!-- Show edit button only if task is In progress -->
+                                    <?php if ($row['status'] != 'Completed'): ?>
+                                        <a href="edit_task.php?id=<?= $row['id']; ?>" class="btn edit">✏️</a>
+                                    <?php endif; ?>
+
 
                                     <!-- Delete task button with confirmation -->
                                     <a href="delete_task.php?id=<?= $row['id']; ?>"
@@ -119,12 +123,14 @@ $result = $conn->query($sql);
                     <?php else: ?>
                         <!-- Message when no tasks are found -->
                         <tr>
-                            <td colspan="5" class="no-data">No tasks found.</td>
+                            <td colspan="5" class="no-data">No tasks found</td>
                         </tr>
                     <?php endif; ?>
                 </tbody>
             </table>
-        </div>
+        </div><!-- TASK TABLE SECTION END -->
+
     </div>
 </body>
+
 </html>
